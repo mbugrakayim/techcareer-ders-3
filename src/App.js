@@ -1,24 +1,56 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+
 
 function App() {
+
+  const [width, setwidth] = useState(15);
+
+  const [height, setheight] = useState(15);
+
+
+  const calc = () => {
+    setheight(height * 1)
+    setwidth(width * 1)
+  }
+
+
+  const handleChangeHeight = e => {
+    setheight(e.target.value);
+    console.log(height);
+
+  };
+
+  const handleChangeWidth = e => {
+
+    setwidth(e.target.value);
+    console.log(width);
+    
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+
+      <div>
+
+        <label htmlFor="">Width : </label>
+        <input type="number" value={width} onChange={handleChangeWidth} />
+
+
+
+        <label htmlFor="">Height : </label>
+        <input type="number" value={height} onChange={handleChangeHeight} />
+
+      </div>
+
+      <button onClick={calc}> Calc</button>
+
+
+      <div style={{ width: width, height: height, backgroundColor: "blue", margin: "auto" }}>
+
+      </div>
+
+
+    </>
   );
 }
 
